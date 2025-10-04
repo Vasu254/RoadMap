@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Road Map</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="logo" aria-hidden="true">RM</span>
+        <span class="brand-name">Road Map</span>
+      </a>
+      <div class="nav-links" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="firstyear.html">First</a>
+        <a href="Secondyear.html">Second</a>
+        <a href="thirdyear.html">Third</a>
+        <a href="finalyear.html">Final</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <main class="hero">
+      <div class="overlay">
+        <header class="site-header">
+          <h1>Contact</h1>
+          <p class="subtitle">
+            I'd love to hear from you — quick ways to reach out.
+          </p>
+        </header>
+
+        <section class="contact-card" aria-label="Contact details">
+          <div class="contact-grid">
+            <div class="contact-item">
+              <h4>Email</h4>
+              <p id="email">vasukumartelugu254@gmai.con</p>
+              <button class="copy-btn" id="copyEmail">Copy email</button>
+
+              <h4 style="margin-top: 12px">Prefer to send a message?</h4>
+              <form class="contact-form" id="contactForm">
+                <label for="name">Your name</label>
+                <input id="name" name="name" placeholder="Your full name" />
+
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" placeholder="Subject" />
+
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message..."
+                ></textarea>
+
+                <button type="submit">Open mail client</button>
+              </form>
+            </div>
+
+            <div class="contact-item">
+              <h4>Social / Links</h4>
+              <p style="color: var(--muted)">
+                Add your LinkedIn, GitHub or portfolio links here so people can
+                connect.
+              </p>
+              <ul style="color: var(--muted); margin-top: 8px">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://your-portfolio.example.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Portfolio"
+                    >Portfolio</a
+                  >
+                </li>
+              </ul>
+
+              <h4 style="margin-top: 12px">Location</h4>
+              <p style="color: var(--muted)">
+                (Add your city, state or region)
+              </p>
+
+              <h4 style="margin-top: 12px">Availability</h4>
+              <p style="color: var(--muted)">
+                Open to internships, freelance and hiring inquiries.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div>copy rights @vasukumar</div>
+        <div>
+          Contact:
+          <a href="mailto:vasukumartelugu254@gmai.con"
+            >vasukumartelugu254@gmai.con</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Copy email to clipboard
+      document
+        .getElementById("copyEmail")
+        .addEventListener("click", function () {
+          const email = document.getElementById("email").textContent.trim();
+          navigator.clipboard.writeText(email).then(() => {
+            this.textContent = "Copied ✓";
+            setTimeout(() => (this.textContent = "Copy email"), 1500);
+          });
+        });
+
+      // Build mailto from form and open default mail client
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = encodeURIComponent(
+            document.getElementById("name").value || ""
+          );
+          const subject = encodeURIComponent(
+            document.getElementById("subject").value || ""
+          );
+          const message = encodeURIComponent(
+            document.getElementById("message").value || ""
+          );
+          const body =
+            encodeURIComponent("Name: " + name + "\n\n") + "%0D%0A" + message;
+          const mailto =
+            "mailto:vasukumartelugu254@gmai.con?subject=" +
+            subject +
+            "&body=" +
+            body;
+          window.location.href = mailto;
+        });
+    </script>
+  </body>
+</html>
