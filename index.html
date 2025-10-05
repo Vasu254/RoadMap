@@ -12,6 +12,15 @@
         <span class="logo" aria-hidden="true">RM</span>
         <span class="brand-name">Road Map</span>
       </a>
+      <button
+        class="hamburger"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <div class="nav-links" role="navigation">
         <a href="index.html">Home</a>
         <a href="firstyear.html">First</a>
@@ -53,126 +62,25 @@
           aria-label="Yearly roadmaps"
         >
           <a class="card" href="firstyear.html">
-            <div class="icon" aria-hidden="true">
-              <!-- simple roadmap/flag SVG -->
-              <svg
-                viewBox="0 0 24 24"
-                width="48"
-                height="48"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 3v18"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 6c6-2 9-2 12 0-3 2-6 2-12 0z"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M15 4v6a2 2 0 0 0 2 2h3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+            <div class="icon roman-numeral" aria-hidden="true">I</div>
             <h2>First Year</h2>
             <p>Foundations: basics, prerequisites and orientation.</p>
           </a>
 
           <a class="card" href="Secondyear.html">
-            <div class="icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="48"
-                height="48"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 21c6-2 9-2 12 0-3 2-6 2-12 0z"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M9 3v6a2 2 0 0 0 2 2h6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 3v6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+            <div class="icon roman-numeral" aria-hidden="true">II</div>
             <h2>Second Year</h2>
             <p>Core topics: build on foundations and grow skills.</p>
           </a>
 
           <a class="card" href="thirdyear.html">
-            <div class="icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="48"
-                height="48"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 12h18"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M12 3v18"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="17" cy="7" r="3" />
-              </svg>
-            </div>
+            <div class="icon roman-numeral" aria-hidden="true">III</div>
             <h2>Third Year</h2>
             <p>Advanced topics, electives and hands-on projects.</p>
           </a>
 
           <a class="card" href="finalyear.html">
-            <div class="icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="48"
-                height="48"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 6h18"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M6 6v12a2 2 0 0 0 2 2h8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M14 6v8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+            <div class="icon roman-numeral" aria-hidden="true">IV</div>
             <h2>Final Year</h2>
             <p>Capstone, research, internships and career prep.</p>
           </a>
@@ -190,5 +98,35 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("nav-open");
+        hamburger.setAttribute(
+          "aria-expanded",
+          hamburger.getAttribute("aria-expanded") === "true" ? "false" : "true"
+        );
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove("nav-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && navLinks.classList.contains("nav-open")) {
+          navLinks.classList.remove("nav-open");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
   </body>
 </html>
